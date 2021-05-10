@@ -1,0 +1,40 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Moveable box generator</span>
+    <span class="example-spacer"></span>
+
+    <button mat-flat-button aria-label="Add Box" (click)="addBox()">
+      Add Box
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="delete all icon" (click)="clearAll()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <mat-slide-toggle [(ngModel)]="isKeyEventEnabled"></mat-slide-toggle>
+  </mat-toolbar>
+</div>
+<div>
+  <!-- <mat-grid-list cols="5" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let boxId of boxList">
+        <div class="box" [id]=boxId [ngStyle]="{'z-index':boxId, 'border': isSelected(boxId)? 'solid #000' : 'none' }"
+        (click)="selectBox(boxId)">
+        {{boxId}}
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list> -->
+
+  <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+    <ng-container *ngFor="let boxId of boxList">
+      <div class="box" [id]=boxId [ngStyle]="{
+        'z-index':boxId,
+      'border': isSelected(boxId)? 'solid #000' : 'none',
+      'top': '0px',
+      'left': '0px'
+    }" (click)="selectBox(boxId)">
+        {{boxId}}
+      </div>
+    </ng-container>
+  </div>
+
+</div>
